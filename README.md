@@ -21,17 +21,25 @@ The primary dataset used comprises land usage and population demographic data or
 
 Public facility data was sourced from the Ministry of Land, Infrastructure, Transport, and Tourism (MLITT), containing over 14,000 facilities. Filtering was done based on criteria such as structural fireproofing and access to roads wider than 12 meters. A subset of these facilities was classified as potential shelters based on available data, resulting in 964 public facilities suitable for analysis.
 
-![kanto_mesh_locations](images/kanto_mesh_locations.png)
-***Figure 1** Meshes with available data in the Kanto Region*
+<figure style="text-align: center;">
+    <img src="images/kanto_mesh_locations.png" alt="kanto_mesh_locations" style="max-height: 600px; width: auto;">
+    <figcaption><em><b>Figure 1</b> Meshes with available data in the Kanto Region</em></figcaption>
+</figure>
 
-![mesh_locations](images/mesh_locations.png)
-***Figure 2** Meshes with available data in Tokyo prefectures (within the gray boundary). Gaps between rectangles indicate areas without data, which were excluded from the investigation.*
+<figure style="text-align: center;">
+    <img src="images/mesh_locations.png" alt="mesh_locations" style="max-height: 400px; width: auto;">
+    <figcaption><em><b>Figure 2</b> Meshes with available data in Tokyo prefectures (within the gray boundary). Gaps between rectangles indicate areas without data, which were excluded from the investigation.</em></figcaption>
+</figure>
 
-![orange_facilities_blue_shelters](images/orange_facilities_blue_shelters.png)
-***Figure 3** Distribution of the valid subset of N=964 public facilities (orange) and n=35 evacuation shelters (blue) within the Tokyo dataset. Circles represent a 500-meter safe evacuation radius.*
+<figure style="text-align: center;">
+    <img src="images/orange_facilities_blue_shelters.png" alt="orange_facilities_blue_shelters" style="max-height: 400px; width: auto;">
+    <figcaption><em><b>Figure 3</b> Distribution of the valid subset of N=964 public facilities (orange) and n=35 evacuation shelters (blue) within the Tokyo dataset. Circles represent a 500-meter safe evacuation radius.</em></figcaption>
+</figure>
 
-![shelter_discrepancies](images/shelter_discrepancies.png)
-***Figure 4** Disparity between the actual number of shelters and the shelters with publicly available data. Darker colors indicate larger disparities.*
+<figure style="text-align: center;">
+    <img src="images/shelter_discrepancies.png" alt="shelter_discrepancies" style="max-height: 400px; width: auto;">
+    <figcaption><em><b>Figure 4</b> Disparity between the actual number of shelters and the shelters with publicly available data. Darker colors indicate larger disparities.</em></figcaption>
+</figure>
 
 ## 3. Methodology
 
@@ -41,33 +49,59 @@ Public facility data was sourced from the Ministry of Land, Infrastructure, Tran
 
 ## 4. Results and Analysis
 
-**Table 1**: Rounded accuracy scores for models trained on Tokyo data and tested on both unseen Tokyo data and Aichi test data.
-
-| Model                                | Tokyo Test Data | Aichi Test Data |
-|--------------------------------------|-----------------|-----------------|
-| Linear Regression <br> (trained on 26 features) | 27.17%          | 23.46%          |
-| Convolutional Neural Network <br> (trained on 26 features) | 97.95%          | 99.64%          |
+<div style="text-align: center;">
+  <strong>Table 1</strong>: Rounded accuracy scores for models trained on Tokyo data and tested on both unseen Tokyo data and Aichi test data.
+  <table style="margin: 0 auto;">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Tokyo Test Data</th>
+        <th>Aichi Test Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Linear Regression <br> (trained on 26 features)</td>
+        <td>27.17%</td>
+        <td>23.46%</td>
+      </tr>
+      <tr>
+        <td>Convolutional Neural Network <br> (trained on 26 features)</td>
+        <td>97.95%</td>
+        <td>99.64%</td>
+      </tr>
+    </tbody>
+  </table>
+</div><br>
 
 The CNN outperformed the linear regression model with high accuracy rates, achieving 97.95% and 99.64% accuracy on Tokyo and Aichi test data, respectively. This demonstrates the CNN's ability to predict shelter requirements effectively across different regions.
 
-![rf_xgboost_confusion_matrices](images/rf_xgboost_confusion_matrices.png)
-***Figure 5** Confusion matrices for Random Forest (left) and XGBoost (right) models trained and tested on Tokyo data. Positive and negative classes denote shelter-capable and shelter-incapable classifications, respectively.*
+<figure style="text-align: center;">
+    <img src="images/rf_xgboost_confusion_matrices.png" alt="rf_xgboost_confusion_matrices" style="height: 300px; width: auto;">
+    <figcaption><em><b>Figure 5</b> Confusion matrices for Random Forest (left) and XGBoost (right) models trained and tested on Tokyo data. Positive and negative classes denote shelter-capable and shelter-incapable classifications, respectively.</em></figcaption>
+</figure>
 
 For the classification task, both Random Forest and XGBoost models showed high recall, with the Random Forest model achieving 94.9% recall and XGBoost 89.9%. These models effectively identified shelter-capable facilities, though they struggled with generalization outside Tokyo due to data imbalance and regional feature differences.
 
 ## 5. Discussion and Demonstration
 While the CNN performed well across regions, the classifier's effectiveness was reduced when tested on Chiba Prefecture, where class imbalance was more pronounced. Dimensionality reduction techniques (PCA and t-SNE) revealed that the features of shelter-capable and shelter-incapable facilities were not easily distinguishable in Chiba, suggesting the need for more regional-specific features.
 
-![chiba_confusion_matrix](images/chiba_confusion_matrix.png)
-***Figure 6** Confusion matrix for Chiba Prefecture. Positive and negative classes denote shelter-capable and shelter-incapable facilities, respectively.*
+<figure style="text-align: center;">
+    <img src="images/chiba_confusion_matrix.png" alt="chiba_confusion_matrix" style="height: 300px; width: auto;">
+    <figcaption><em><b>Figure 6</b> Confusion matrix for Chiba Prefecture. Positive and negative classes denote shelter-capable and shelter-incapable facilities, respectively.</em></figcaption>
+</figure>
 
-![pca_and_tsne](images/pca_and_tsne.png)
-***Figure 7** Dimensionality reduction of the 26 features for Chiba Prefecture using principal component analysis (PCA, left) and t-distributed stochastic neighbor embedding (t-SNE, right).*
+<figure style="text-align: center;">
+    <img src="images/pca_and_tsne.png" alt="pca_and_tsne" style="max-height: 600px; width: auto;">
+    <figcaption><em><b>Figure 7</b> Dimensionality reduction of the 26 features for Chiba Prefecture using principal component analysis (PCA, left) and t-distributed stochastic neighbor embedding (t-SNE, right).</em></figcaption>
+</figure>
 
 In a demonstration on Northern Chiba, the CNN predicted shelter requirements and the classification model identified suitable public facilities. The predicted shelters were mainly concentrated in urban areas, reflecting the model's reliance on population density and land features.
 
-![demonstration](images/demonstration.png)
-***Figure 8** Map (partly) of Northern Chiba (Nagareyama, Kashiwa, Matsudo) showing public facilities (black), existing shelters and their safe evacuation boundaries (red), and predicted shelters and their safe evacuation boundaries (orange).*
+<figure style="text-align: center;">
+    <img src="images/demonstration.png" alt="demonstration" style="max-height: 600px; width: auto;">
+    <figcaption><em><b>Figure 8</b> Map (partly) of Northern Chiba (Nagareyama, Kashiwa, Matsudo) showing public facilities (black), existing shelters and their safe evacuation boundaries (red), and predicted shelters and their safe evacuation boundaries (orange).</em></figcaption>
+</figure>
 
 ## 6. Conclusion
 The machine learning-based recommendation system demonstrated promising results in predicting the number of shelters and identifying suitable public facilities for evacuation. While the CNN model showed high generalizability, the classification model's performance was constrained by data imbalance and regional feature variations. Future work should focus on incorporating additional features that capture regional differences to improve model accuracy across diverse prefectures. This research provides a promising approach to enhancing disaster preparedness, especially in under-resourced rural areas.
