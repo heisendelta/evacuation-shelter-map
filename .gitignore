@@ -163,3 +163,4 @@ cython_debug/
 drafts/
 Presentation*
 .DS_Store
+*.gdoc
