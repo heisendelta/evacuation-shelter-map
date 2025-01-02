@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Folder>
+	<name>JSHIS2</name>
+	<open>1</open>
+	<LookAt>
+		<longitude>139</longitude>
+		<latitude>35</latitude>
+		<altitude>0</altitude>
+		<range>1000000</range>
+		<tilt>0</tilt>
+		<heading>0.7</heading>
+		<altitudeMode>relativeToGround</altitudeMode>
+	</LookAt>
+<Folder>
+<name>確率論的地震動予測地図</name>
+<open>1</open>
+<Folder>
+<name>2023年(NIED試作版)</name>
+<open>1</open>
+<Folder>
+<name>平均ケース</name>
+<open>1</open>
+<Folder>
+<name>全ての地震</name>
+<open>1</open>
+<Folder>
+<name>30年 震度5強以上のゆれに見舞われる確率</name>
+<open>1</open>
+<ScreenOverlay>
+<name>凡例</name>
+<Icon>
+<href>
+https://www.j-shis.bosai.go.jp/JSHIS2/IMAGE/etc/P-Y2020-PD-kml.png
+</href>
+</Icon>
+<overlayXY x="0" y="1" xunits="fraction" yunits="fraction"/>
+<screenXY x="5" y="0.99" xunits="pixels" yunits="fraction"/>
+<size x="0" y="0" xunits="pixels" yunits="pixels"/>
+</ScreenOverlay>
+<GroundOverlay>
+<name>地図</name>
+<Icon>
+<href>
+https://www.j-shis.bosai.go.jp/map/wms/jmw?map=P-Y2023-MAP-AVR-TTL_MTTL&amp;REQUEST=GetMap&amp;SERVICE=WMS&amp;VERSION=1.1.1&amp;LAYERS=P-Y2023-MAP-AVR-TTL_MTTL-T30_I50_PD2&amp;FORMAT=image/png&amp;SRS=EPSG:4326&amp;BBOX=120,24,153,47&amp;WIDTH=1024&amp;HEIGHT=1024
+</href>
+<viewRefreshMode>onStop</viewRefreshMode>
+<viewRefreshTime>2</viewRefreshTime>
+<viewBoundScale>1.5</viewBoundScale>
+</Icon>
+<LatLonBox>
+<north>47</north>
+<south>24</south>
+<east>153</east>
+<west>120</west>
+</LatLonBox>
+</GroundOverlay>
+</Folder>
+</Folder>
+</Folder>
+</Folder>
+</Folder>
+</Folder>
+</kml>
