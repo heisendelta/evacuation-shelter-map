@@ -164,3 +164,7 @@ drafts/
 Presentation*
 .DS_Store
 *.gdoc
+
+# Ignore any and all adjacency matrices because their file sizes are large and
+# they're not used in the analysis (only used for GNNs)
+a.npy
